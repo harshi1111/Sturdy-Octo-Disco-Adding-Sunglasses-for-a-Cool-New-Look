@@ -116,7 +116,7 @@ glassMask = glassMask / 255.0
 faceWithGlassesArithmetic = faceImage.copy()
 
 # Adjust size and position (bigger + moved up)
-x, y, w, h = 45, 150, 320, 160  # x = 40 → Shifted left, y = 160 → Moved up, bigger size
+x, y, w, h = 49, 150, 320, 160  # x = 40 → Shifted left, y = 160 → Moved up, bigger size
 
 # Get the eye region from the face image
 eyeROI = faceWithGlassesArithmetic[y:y + h, x:x + w]
@@ -142,16 +142,19 @@ plt.subplot(132); plt.imshow(maskedGlass[...,::-1]); plt.title("Masked Sunglass 
 plt.subplot(133); plt.imshow(faceWithGlassesArithmetic[...,::-1]); plt.title("Augmented Face with Sunglasses")
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/6b1c541d-cee8-4b7f-8ab3-da2874460692)
+![image](https://github.com/user-attachments/assets/136432b1-5abe-4b61-8ceb-3cba29bd7a4e)
+
 
 
 ```
 # Replace the eye ROI with the output from the previous section
-faceWithGlassesArithmetic[150:310, 45:365] = eyeRoiFinal  # Updated dimensions
+faceWithGlassesArithmetic[150:150 + 160, 45:45 + 320] = eyeRoiFinal  # Using (y:y+h, x:x+w)
 
 # Display the final result
 plt.figure(figsize=[20,20])
 plt.subplot(121); plt.imshow(faceImage[:,:,::-1]); plt.title("Original Image")
 plt.subplot(122); plt.imshow(faceWithGlassesArithmetic[:,:,::-1]); plt.title("With Sunglasses")
+plt.show()
 ```
-![image](https://github.com/user-attachments/assets/97be47fa-2c40-4b9f-afd9-0dffc0296fae)
+![image](https://github.com/user-attachments/assets/ca3e38d5-fc17-48aa-bf93-a0a7cde892d1)
+
